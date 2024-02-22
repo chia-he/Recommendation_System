@@ -1,0 +1,768 @@
+
+/*讓每個方框可以密合成一排*/
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: lighter;
+    margin: 0;
+    background: white;
+
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #f1f1f1;
+
+}
+
+.navbarbtn {
+    float: left;
+    font-size: 16px;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s ease;
+
+}
+
+.searchbtn {
+    height: 40px;
+    width: 40px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    float: right;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: black;
+    background-color: darkorange;
+    font: inherit;
+    margin-top: 5px;
+}
+
+.searchbtn_middle {
+    height: 60px;
+    width: 60px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: black;
+    background-color: darkorange;
+    font: inherit;
+    float: left;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: black;
+    padding: 14px 16px;
+    background-color: inherit;
+    font: inherit;
+    margin: 0;
+    transition: 0.3s ease;
+}
+
+.navbarbtn:hover,
+.dropdown:hover .dropbtn {
+    background-color: white;
+    border-bottom: solid orange;
+    color: black;
+}
+
+.searchbtn:hover,
+.searchbtn_middle:hover {
+    opacity: .7;
+}
+
+.searchbtn:active,
+.searchbtn_middle:active {
+    opacity: .7;
+    transform: scale(.7);
+    transition: all 60ms ease;
+}
+
+
+.background-mask {
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 90%;
+    width: 100%;
+    display: none;
+    position: absolute;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    left: 0;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown .row {
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+.dropdown-content .header {
+    background: white;
+    padding: 16px;
+    color: black;
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content:hover .row,
+.dropdown-content:hover .header {
+    opacity: 1;
+}
+
+.dropdowncolumn {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    background-color: white;
+    height: 250px;
+}
+
+.dropdowncolumn a {
+    float: none;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdowncolumn a:hover {
+    background-color: #ddd;
+    font-weight: 500;
+    transition: background-color .3s ease;
+}
+
+.dropdowncolumn a:active {
+    transform: scale(.9);
+    transition: .3s ease;
+}
+
+
+.breadcumbs {
+    border-radius: 20px;
+    background-color: #e6ffb3;
+    font-weight: 400;
+    font-size: 0.7rem;
+    padding: 9px;
+    margin-top: 20px;
+    width: 150px;
+    text-align: center;
+}
+
+
+.form-styling {
+    float: right;
+    width: 23%;
+    height: 40px;
+    padding-left: 15px;
+    border: none;
+    /*    border: solid 0.05rem darkorange;*/
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: auto;
+    background: #f7f7f7;
+}
+
+.form-styling_middle {
+    width: 75%;
+    height: 60px;
+    font-size: 1.2rem;
+    padding-left: 15px;
+    border: none;
+    /*    border: solid 0.05rem darkorange;*/
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background: #f7f7f7;
+    /*    text-align: center;*/
+}
+
+input:focus,
+textarea:focus {
+    background: #d6e0f5;
+    border: solid 0.13rem #edc197;
+    padding-right: 40px;
+    transition: background .5s ease;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    opacity: .6;
+    transition: color .2s ease;
+}
+
+.center {
+    text-align: center;
+    margin: auto;
+}
+
+.banner {
+    background-color: white;
+}
+
+.header {
+    padding: 17px;
+    background: transparent;
+}
+
+.breadcumbs {
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+    font-weight: 400;
+    font-size: 0.8rem;
+    padding: 9px;
+    border: none;
+    width: 100px;
+    text-align: center;
+}
+
+.breadcumbs:hover {
+    opacity: 0.5;
+}
+
+.breadcumbs:active {
+    transform: scale(.7);
+    transition: all .3s ease;
+}
+
+/*一個用來消除 columns 後 floats 的一個 cleatfix */
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.footer {
+    padding: 25px;
+    height: 150px;
+    text-align: center;
+    background-color: #f1f1f1;
+    margin-top: 110px;
+}
+
+.leftcolumn {
+    float: left;
+    width: 20%;
+}
+
+.rightcolumn {
+    float: left;
+    width: 80%;
+    padding-left: 20px;
+}
+
+.column_2_1 {
+    float: left;
+    width: 35%;
+}
+
+.column_2_2 {
+    float: left;
+    width: 43%;
+    padding-left: 10px;
+}
+
+.column_2_3 {
+    float: left;
+    width: 18%;
+    height: 620px;
+    
+    font-weight: 400;
+    margin-left: 4%;
+    padding: 15px;
+    border-radius: 10px;
+    border: solid 1px #c4c5c6;
+    text-align: center;
+    /*
+    box-shadow: 1px 4px 8px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+*/
+}
+
+/*
+.column_2_3:hover {
+    box-shadow: 2px 16px 32px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+    transition: .3s ease;
+}
+*/
+
+.smallphoto {
+    width: 85%;
+}
+
+@media screen and (max-width: 1300px) {
+    .column_2_1 {
+        width: 40%;
+    }
+    .column_2_2 {
+        width: 60%;
+    }
+    .column_2_3 {
+        width: 100%;
+        margin-top: 40px;
+        height: 400px;
+        margin-left: 0px;
+    }
+
+    .column_2_3 img {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .searchbtn {
+        display: none;
+    }
+    .form-styling {
+        display: none;
+    }
+    #campus {
+        display: none;
+    }
+    .smallphoto {
+        width: 40%;
+        margin-left: 30%;
+    }
+    .leftcolumn {
+        width: 100%;
+    }
+    .rightcolumn {
+        width: 100%;
+        padding: 0;
+        text-align: center;
+    }
+    .column_2_1 {
+        width: 100%;
+    }
+    .column_2_2 {
+        width: 100%;
+    }
+    .column_2_3 {
+        width: 100%;
+    }
+
+    .leftcolumn_2 {
+        width: 100%;
+    }
+    .rightcolumn_2 {
+        width: 100%;
+    }
+    .dropdowncolumn {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1300px) {
+    .container {
+        width: 1250px;
+    }
+}
+
+.container_large {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 768px) {
+    .container_large {
+        width: 750px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container_large {
+        width: 1000px;
+    }
+}
+
+@media (min-width: 1700px) {
+    .container_large {
+        width: 1600px;
+    }
+}
+
+.brand {
+    width: 260px;
+    height: 60px;
+    margin-left: 37%;
+}
+
+@media only screen and (max-width: 1300px) {
+    .brand {
+        margin-left: 1%;
+
+    }
+}
+
+hr {
+    border-bottom: 0.01px solid #f1f1f1;
+}
+
+.preloader-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.tiny-icons {
+    height: 30px;
+    width: 30px;
+}
+
+/*
+.navbar-fixed {
+  top:-64px;
+}
+*/
+
+@-webkit-keyframes zoomIn {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(.1);
+        transform: scale(.1);
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(.1);
+        transform: scale(.1);
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes zoomOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: scale(.1);
+        transform: scale(.1);
+    }
+}
+
+@keyframes zoomOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: scale(.1);
+        transform: scale(.1);
+    }
+}
+
+.zoomIn {
+    -webkit-animation-name: zoomIn;
+    animation-name: zoomIn;
+    animation-duration: 1.3s;
+    -webkit-animation-duration: 1.3s;
+}
+
+.zoomOut {
+    -webkit-animation-name: zoomOut;
+    animation-name: zoomOut;
+    animation-duration: .8s;
+    -webkit-animation-duration: .8s;
+}
+
+.partial-border {
+    position: relative;
+}
+
+.partial-border:after {
+    content: '';
+    width: 70%;
+    height: 2px;
+    background: darkorange;
+
+    position: absolute;
+    bottom: -2px;
+    left: 15%;
+}
+
+.partial-border:before {
+    content: '';
+    width: 70%;
+    height: 2px;
+
+    background: darkorange;
+    position: absolute;
+    top: -2px;
+    left: 15%;
+}
+
+.cart_btn {
+    background-color: darkorange;
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: white;
+    width: 80%;
+    height: 50px;
+    border-radius: 5px;
+    border: 0;
+}
+
+.cart_btn:hover {
+    opacity: .7;
+}
+
+.cart_btn:active {
+    transform: scale(.7);
+    transition: .3s ease;
+}
+
+.selectionbar {
+    width: 25%;
+    height: 35px;
+    padding-left: 15px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    background: #f5f5f0;
+}
+
+.table-inner-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+tr th:last-child,
+tr td:last-child {
+    padding-right: 32px;
+}
+
+caption {
+    background: rgba(24, 12, 76, .8);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: white;
+    padding: 16px 8px;
+    font-size: 110%;
+    text-shadow: 0 0 3px rgba(12, 6, 34, 1);
+    font-weight: bold;
+    width: 30%;
+    
+}
+
+tr {
+    border-bottom: 1px solid rgba(161, 177, 241, .5);
+    /*最後一層tr的下方不印出border*/
+}
+
+tr:last-child {
+    border-bottom: none;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+th {
+    padding: 16px 12px;
+    text-align: left;
+    background: rgba(161, 177, 241, .5);
+}
+
+td {
+    padding: 12px 12px;
+    background: rgba(161, 177, 241, .1);
+}
+
+/*第一行的表格內文置中*/
+
+tr th:first-child,
+tr td:first-child {
+    text-align: center;
+}
+
+.delete {
+    background-color: indianred;
+    font-weight: 600;
+    font-size: 1rem;
+    width: 100%;
+    height: 50px;
+    color: white;
+    border-radius: 5px;
+    border: none;
+}
+
+.delete:hover {
+    opacity: .7;
+}
+
+.delete:active {
+    transform: scale(.7);
+    transition: .3s ease;
+}
+
+.login {
+    width: 45%;
+    padding: 20px;
+    border-radius: 10px;
+    border: solid 1px #c4c5c6;
+    
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+@media only screen and (max-width: 1200px) {
+    .login {
+        width: 80%;
+    }
+}
+
+
+.signbtn {
+    background-color: coral;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+    width: 60%;
+    height: 50px;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    margin-top:20px;
+}
+
+.signbtn:hover {
+    opacity: .7;
+}
+
+.signbtn:active {
+	transform: scale(.7);
+    transition: .3s ease;
+}
+
+
+.column {
+    float: left;
+    width: 100%;
+    margin-left: 2%;
+    text-align: center;
+}
+
+.column_1 {
+    position: relative;
+    float: left;
+    width: 24%;
+    margin-left: 1%;
+    height: 500px;
+    border-bottom: solid 1px grey;
+    text-align: center;
+    margin-top: 20px;
+}
+
+@media only screen and (max-width: 1000px) {
+    .column_1 {
+    width: 49%;
+    margin-left: 1%;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .column {
+        width: 100%;
+        padding: 0;
+        text-align: left;
+    }
+    .column_1 {
+    width: 99%;
+    margin-left: 1%;
+    }
+}
+
+.input-log {
+    width: 100%;
+    height: 40px;
+    padding-left: 15px;
+    border: none;
+    /*    border: solid 0.05rem darkorange;*/
+    border-radius: 5px;
+    background: #f7f7f7;
+}
+
+.valid {
+    border: none;
+}
+
+.invalid {
+    border: solid 0.13rem red;
+    transition: .3s ease;
+    
+}
