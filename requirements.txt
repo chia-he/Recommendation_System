@@ -1,0 +1,16 @@
+facenet-pytorch
+torch 
+torchvision
+Pillow
+pandas
+numpy
+opencv-python
+future
+scikit-learn
+matplotlib
+XlsxWriter
+Flask
+Werkzeug
+gensim
+pymongo
+typing
